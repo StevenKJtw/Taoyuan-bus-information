@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset = "utf-8">
+	<title>OpenStreetMap</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
+	<script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+	<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script>
+        function progress() {
+
+
+
+			var routeid = $("#routeid").val();//獲取下拉式選單的值
+
+			$.ajax({
+			url: "table.php",
+			data: {
+			   routeid: routeid
+				},
+			type: "POST",
+			datatype: "html",
+				success: function( output ) {
+			  		 $( "#out" ).html(output);
+				},
+			error : function(){
+				alert( "Request failed." );
+			}
+			});
+
+		}
+    </script>
+
+	<style>
+		body{
+			font-family: sans-serif;
+	        background-color: lightyellow;
+			position:relative;
+			left:15%;
+			width:920px;
+			background-color:#FFF;
+		}
+		 div#box1
+		{
+			height :92px;
+			width : 920px;
+			border: 1px solid red;
+			position:relative;
+		}
+		div#box2
+		{
+			border: 1px solid yellow;
+			height:500px;
+			width :300px;
+			position:relative;
+			top:20px;
+			float:left;
+		}
+		div#box3
+		{
+			border: 1px solid blue;
+			height:500px;
+			width :615px;
+			position:relative;
+			top:20px;
+			float:left;
+		}
+		div#box4
+		{
+			border: 1px solid yellow;
+			height:200px;
+			width :300px;
+			position:relative;
+			top:20px;
+			float:left;
+		}
+		div#box5
+		{
+			border: 1px solid yellow;
+			height:200px;
+			width :615px;
+			position:relative;
+			top:20px;
+			float:left;
+		}
+		 table { background-color: lightblue;
+			 border-collapse: collapse;
+			 width :280px;
+			 border: 1px solid gray; }
+		 td    { padding: 5px; }
+		 tr:nth-child(odd) { background-color: white; }
+	</style>
+</head>
+
+<body>
+	<div id = "box1"><img src = "topic.png" style="width:920px;" alt = "logo" /></div>
+
+	<div id = "box2">
+		<form id="form" method = "post" action = "#">
+		<p><select id="routeid" style="width:280px;">
+			<option value="1">【1】中壢<->桃園</option>
+			<option value="1A">【1A】桃園<->中壢</option>
+			<option value="101">【101】桃園<->果菜市場</option>
+			<option value="102">【102】桃園<->景雲新村</option>
+			<option value="103">【103】桃園<->華映公司</option>
+			<option value="105">【105】桃園<->大有路</option>
+			<option value="107">【107】桃園<->中平路</option>
+			<option value="109">【109】桃園<->新興高中</option>
+			<option value="110">【110】中壢<->文化路</option>
+			<option value="111">【111】中壢<->南勢</option>
+			<option value="112S">【112S】中壢<->陸軍專科學校</option>
+			<option value="113">【113】桃園<->幸福社區</option>
+			<option value="115A">【115A】中壢<->平東路</option>
+			<option value="115B">【115B】中壢<->平東路</option>
+			<option value="116">【116】中壢<->自立新村</option>
+			<option value="117">【117】桃園<->寶慶路</option>
+			<option value="118">【118】中壢<->中壢高中</option>
+			<option value="119">【119】中壢<->壢新醫院</option>
+			<option value="120">【120】中壢<->太子鎮</option>
+			<option value="125">【125】桃園<->三聖宮</option>
+			<option value="132">【132】中壢<->中央大學</option>
+			<option value="132A">【132A】中壢<->中央大學<->高鐵桃園站</option>
+			<option value="135">【135】中壢<->內壢高中</option>
+			<option value="137">【137】桃園<->銘傳大學</option>
+			<option value="139">【139】桃園<->新莊廟</option>
+			<option value="151">【151】桃園<->同安街</option>
+			<option value="152">【152】桃園<->同安街</option>
+			<option value="155">【155】中壢<->元智大學</option>
+			<option value="156">【156】中壢<->元智大學</option>
+			<option value="157">【157】桃園<->八德<->新興高中</option>
+			<option value="169">【169】中壢<->華勛社區</option>
+			<option value="171">【171】中壢<->高鐵桃園站</option>
+			<!-- <option value="">【188】桃園市政府<->中正藝文社區</option> -->
+			<option value="201">【201】蘆竹<->八德</option>
+			<option value="206">【206】桃園<->高鐵桃園站</option>
+			<option value="301">【301】龜山<->楊梅</option>
+			<option value="501">【501】台灣好行景點接駁公車慈湖線</option>
+			<option value="502">【502】（假日行駛）台灣好行-小鳥來天空步道</option>
+			<option value="601">【601】內壢<->捷運迴龍站</option>
+			<option value="701">【701】龍潭<->林口長庚醫院</option>
+			<option value="702">【702】大溪<->林口長庚醫院</option>
+			 <!-- <option value="">【707】桃園<->桃園棒球場</option>
+			<option value="">【707A】桃園<->桃園棒球場</option> -->
+			<option value="BR">【BR】桃園<->捷運迴龍站</option>
+			<option value="GR">【GR】桃園後站<->捷運坑口站</option>
+			<option value="GR2">【GR2】桃園<->八德</option>
+		</select>
+		<br />
+		<br />
+		<input type="button" value="查看公車路線" id="submit" onclick="progress()">
+		</form>
+
+		<div id="out" style="width:300px;height:405px;overflow: scroll;"></div>
+	</div>
+
+	<div id = "box3">
+		<div id="map" style="width: 615px; height: 500px"></div>
+		<script>
+			//基礎圖層
+			var cities = new L.LayerGroup();
+			L.marker([24.9699054, 121.264305]).bindPopup('元智大學').addTo(cities);
+			
+			var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+					'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+					'Imagery ? <a href="http://mapbox.com">Mapbox</a>',
+				mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6IjZjNmRjNzk3ZmE2MTcwOTEwMGY0MzU3YjUzOWFmNWZhIn0.Y8bhBaUMqFiPrDRW9hieoQ';
+			var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: mbAttr}),
+				streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr});
+
+			//下面三個變量分別為地圖和地圖右上角的懸浮框
+			var map = L.map('map', {
+				center: [24.9699054, 121.264305],
+				zoom: 13,
+				layers: [streets, cities]
+			});
+			var baseLayers = {
+				"Grayscale": grayscale,
+				"Streets": streets
+			};
+			var overlays = {
+				"Cities": cities
+			};
+			L.control.layers(baseLayers, overlays).addTo(map);		
+		</script>
+
+		<script type="text/javascript">
+			//畫路線的function
+			function myFunction(data) {
+				var data = JSON.parse(data);
+				for (var i=0; i<data.length; i++){
+					L.marker([data[i].Latitude, data[i].Longitude]).bindPopup(data[i].SeqNo+data[i].NameZh).addTo(cities);
+				}	
+				for (var i=0; i<data.length; i++){
+					var pointA = new L.LatLng(data[i].Latitude, data[i].Longitude);
+					var pointB = new L.LatLng(data[i+1].Latitude, data[i+1].Longitude);
+					var pointList = [pointA, pointB];
+					var firstpolyline = new L.Polyline(pointList, {
+						color: 'blue',
+						weight: 5,
+						opacity: 0.5,
+						smoothFactor: 1
+					});
+					firstpolyline.addTo(map);
+				}	
+					
+			}
+
+			// ajax 
+			$("#submit").click(function()
+			{
+				var routeid = $("#routeid").val();
+				//var params=$("#form").serialize();
+				$.ajax({
+					url: 'getdata.php',
+					type: "POST",
+					data:{
+						routeid:routeid,
+					},
+					//async: false,
+					//timeout: 30000,
+					success: function(data){
+					//處理data數據
+					myFunction(data);
+					//document.write(data);
+					},
+					error : function()
+					{
+						//alert( "Request failed." );
+					}
+				});
+			});
+
+
+			function mark_point() {
+
+			}
+		</script>
+	</div>
+		<div id="box4">瀏覽用戶們的意見：
+			<form>
+				<input type="button" value="查看評論" id="comment_scan" />
+			</form>
+			<div id="out_comments"></div>
+			<div id="scan_more"></div>
+			<script type="text/javascript">
+				// ajax 
+					$("#comment_scan").click(function()
+					{
+
+						          setInterval(function() {
+	  						$.ajax({
+							url: 'get_comments.php',
+							type: "POST",
+							data:{
+							},
+							datatype: "html",
+							success: function(output ){
+								 $( "#out_comments" ).html(output);
+								 $( "#scan_more" ).html("<a href='scan_more.php'>查看更多...</a>");
+							},
+							error : function()
+							{
+								alert( "讀取失敗" );
+							}
+						});
+	            }, 1000);
+				// 	$.ajax({
+				// 		url: 'get_comments.php',
+				// 		type: "POST",
+				// 		data:{
+				// 		},
+				// 		datatype: "html",
+				// 		success: function(output ){
+				// 			 $( "#out_comments" ).html(output);
+				// 			 $( "#scan_more" ).html("<a href='scan_more.php'>查看更多...</a>");
+				// 		},
+				// 		error : function()
+				// 		{
+				// 			alert( "讀取失敗" );
+				// 		}
+				// 	});
+				 });
+			</script>
+		</div>
+
+		<div id="box5">請在下面輸入您的意見與建議：
+			<form>
+				<textarea name = "comments" rows = "5" cols = "50" placeholder = "請在這裡輸入您的意見與建議"  id="content" required></textarea><br/>
+				<input type="button" value="提交" id="comment_submit" />
+				<div id="out_send_flag"></div>
+			</form>
+
+			<script type="text/javascript">
+				// ajax 
+				$("#comment_submit").click(function()
+				{
+					//獲取php傳過來的帶有參數的URL
+			        var value = window.location.href;
+			        var arr = value.substring(value.lastIndexOf('?') + 1,value.length).split('&');
+			        var username = "username";
+
+			        for(var i = 0; i < arr.length; i++){
+			            //window.alert(arr[i].split('=')[1]);   
+						username = arr[i].split('=')[1];
+			        }
+
+					var content = $("#content").val();
+					document.getElementById("content").value = "";
+					$("#content").html("");
+					$.ajax({
+						url: 'send_comments.php',
+						type: "POST",
+						data:{
+							username:username,
+							content:content
+						},
+						datatype: "html",
+						success: function(output ){
+							 $( "#out_send_flag" ).html(output);
+							 
+						},
+						error : function()
+						{
+							alert( "提交失敗" );
+						}
+					});
+
+
+
+				});
+
+		
+			</script>
+		</div>
+</body>
+</html>
+
+

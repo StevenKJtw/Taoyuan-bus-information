@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+	<title>register</title>
+</head>
+<style type="text/css">
+	.content
+	{
+		align:center;
+	}
+	.button
+	{
+		font-size:10px;
+	}
+	#right{
+		text-align: right;
+	}
+	</style>
+<body>
+<h1><center>賬號註冊<center></h1>
+<form method="post" action="register.php">
+<div align="center">
+<div class="content"  >
+    <div class="text">
+	<table>
+	<tr>
+	<td id="right">用戶名</td>
+	<td colspan="2"><input type="text" name="name" placeholder = "Enter name" required></div></td>
+	</tr>
+	<tr>
+	<td id="right">密碼</td>
+	<td colspan="2"><input type="password" name="password" placeholder = "Enter passowrd" required></td>
+	</tr>
+	<tr><td id="right">再次輸入</td>
+	<td colspan="2"><input type="password" name="pwd_again" placeholder = "Enter passowrd again"required></td>
+	</tr>
+	<tr>
+	<td id="right">驗證碼</td>
+	<td><input type="text" name="check" required/></td>
+	<td> <img src="showing.php" /></td>
+	</tr>
+	<tr><td id="right">
+	<input  type="radio" name="agree" value="是否同意我們的條款" required></td><td colspan="2">同意我們的條款</td>
+	</tr>
+	<tr><td id="right"><input type="submit" value="提交"></td>
+	<td colspan="2"><input type="reset" value="清除"></td>
+	</tr>
+	</table>
+</div>
+</div>
+</form>
+</body>
+</html>
